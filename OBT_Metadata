@@ -1,0 +1,97 @@
+config = {
+    "target_table": "SILVER_OBT",
+    "base_table": "STREAM (uber.bronze_new.stg_rides) WATERMARK BOOKING_TIMESTAMP DELAY OF INTERVAL 3 MINUTES as sr",
+    "select_columns": [
+        "sr.ride_id",
+        "sr.confirmation_number",
+        "sr.passenger_id",
+        "sr.driver_id",
+        "sr.vehicle_id",
+        "sr.pickup_location_id",
+        "sr.dropoff_location_id",
+        "sr.vehicle_type_id",
+        "sr.vehicle_make_id",
+        "sr.payment_method_id",
+        "sr.ride_status_id",
+        "sr.pickup_city_id",
+        "sr.dropoff_city_id",
+        "sr.cancellation_reason_id",
+        "sr.passenger_name",
+        "sr.passenger_email",
+        "sr.passenger_phone",
+        "sr.driver_name",
+        "sr.driver_rating",
+        "sr.driver_phone",
+        "sr.driver_license",
+        "sr.vehicle_model",
+        "sr.vehicle_color",
+        "sr.license_plate",
+        "sr.pickup_address",
+        "sr.pickup_latitude",
+        "sr.pickup_longitude",
+        "sr.dropoff_address",
+        "sr.dropoff_latitude",
+        "sr.dropoff_longitude",
+        "sr.distance_miles",
+        "sr.duration_minutes",
+        "sr.booking_timestamp",
+        "sr.pickup_timestamp",
+        "sr.dropoff_timestamp",
+        "sr.base_fare",
+        "sr.distance_fare",
+        "sr.time_fare",
+        "sr.surge_multiplier",
+        "sr.subtotal",
+        "sr.tip_amount",
+        "sr.total_fare",
+        "sr.rating",
+        "vt.vehicle_type",
+        "vt.description",
+        "vt.base_rate",
+        "vt.per_mile",
+        "vt.per_minute",
+        "vm.vehicle_make",
+        "map_cancel_reasn.cancellation_reason",
+        "map_payment_methods.payment_method",
+        "map_payment_methods.is_card",
+        "map_payment_methods.requires_auth",
+        "map_ride_statuses.ride_status",
+        "map_cities.city as pickup_city",
+        "map_cities.state",
+        "map_cities.region",
+        "map_cities.updated_at as city_updated_at"
+    ],
+    "joins": [
+        {
+            "type": "left",
+            "table": "uber.bronze_new.map_vehicle_types as vt",
+            "on": "sr.vehicle_type_id = vt.vehicle_type_id"
+        },
+        {
+            "type": "left",
+            "table": "uber.bronze_new.map_vehicle_makes as vm",
+            "on": "sr.vehicle_make_id = vm.vehicle_make_id"
+        },
+        {
+            "type": "left",
+            "table": "uber.bronze_new.map_cancellation_reasons as map_cancel_reasn",
+            "on": "sr.cancellation_reason_id = map_cancel_reasn.cancellation_reason_id"
+        },
+        {
+            "type": "left",
+            "table": "uber.bronze_new.map_payment_methods as map_payment_methods",
+            "on": "sr.payment_method_id = map_payment_methods.payment_method_id"
+        },
+        {
+            "type": "left",
+            "table": "uber.bronze_new.map_ride_statuses as map_ride_statuses",
+            "on": "sr.ride_status_id = map_ride_statuses.ride_status_id"
+        },
+        {
+            "type": "left",
+            "table": "uber.bronze_new.map_cities as map_cities",
+            "on": "sr.pickup_city_id = map_cities.city_id"
+        }
+    ],
+    "where_conditions": []
+}
