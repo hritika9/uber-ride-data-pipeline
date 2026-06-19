@@ -1,4 +1,4 @@
-config = {
+config = [{
     "target_table": "SILVER_OBT",
     "base_table": "STREAM (uber.bronze_new.stg_rides) WATERMARK BOOKING_TIMESTAMP DELAY OF INTERVAL 3 MINUTES as sr",
     "select_columns": [
@@ -95,3 +95,4 @@ config = {
     ],
     "where_conditions": []
 }
+]
