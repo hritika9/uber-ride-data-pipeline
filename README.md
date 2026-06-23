@@ -12,7 +12,7 @@ A metadata-driven framework using configuration tables and Jinja templates enabl
 
 ## 🏗️ Architecture
 
-![Architecture]()
+![Architecture](Images/Architecture.png)
 
 ---
 
@@ -259,7 +259,7 @@ dim_payments
 
 ## 📊 Databricks Pipeline DAG
 
-![Pipeline DAG](images/pipeline_dag.png)
+![Pipeline DAG](Images/pipeline_dag.png)
 
 The DAG demonstrates:
 
@@ -293,25 +293,24 @@ The DAG demonstrates:
 ```text
 project-root/
 │
-├── architecture/
+├── Images
 │   └── architecture.png
+|   └── pipleline_day.png
 │
-├── metadata/
+├── data/
 │   ├── config.json
-│   └── mapping_files/
+│   └── mapping_files
 │
 ├── templates/
 │   └── silver_obt.sql.j2
 │
 ├── notebooks/
-│   ├── bronze/
-│   ├── silver/
-│   ├── gold/
-│   └── cdc/
-│
-├── screenshots/
-│   ├── pipeline_dag.png
-│   └── dashboard.png
+│   ├── bronze_adls
+│   ├── silver.py
+│   ├── silver_obt.sql
+│   └── ingest.py
+|   └── Silver_obt.py
+|   └── Model.py
 │
 └── README.md
 ```
