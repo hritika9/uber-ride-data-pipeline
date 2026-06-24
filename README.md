@@ -1,4 +1,4 @@
-# 🚖 Real-Time Ride Analytics Platform using Azure & Databricks
+# 🚖 Metadata-Driven Real-Time Data Platform
 
 ## 📖 Project Overview
 
