@@ -74,6 +74,8 @@ Azure Event Hub
 
 ## Step 2: Historical Data Ingestion
 
+![Azure_data_factory](Images/Adf.png)
+
 Historical ride datasets are loaded through Azure Data Factory into Azure Data Lake Storage.
 
 ```text
